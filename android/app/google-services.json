@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "277454502150",
+    "project_id": "fir-tut-ee124",
+    "storage_bucket": "fir-tut-ee124.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277454502150:android:cfaf7d576f64134692c687",
+        "android_client_info": {
+          "package_name": "com.reactnativefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277454502150-o3164his0ksmndjh8bhjua9gsioa8aok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD88Fmp_bMsyQI2ebxvmCcAJjnEtrxti5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277454502150-o3164his0ksmndjh8bhjua9gsioa8aok.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "277454502150-vsrb0n8bhtv2676gfvon1ff7u23sj9g3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.ReactNativeFireBase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
