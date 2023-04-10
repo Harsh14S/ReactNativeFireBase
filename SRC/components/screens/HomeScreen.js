@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {RFPercentage} from 'react-native-responsive-fontsize';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 import Auth from '@react-native-firebase/auth';
 import ManualButton from '../../common/subComponents/ManualButton';
 
-export default HomeScreen = ({route, navigation}) => {
+export default HomeScreen = ({ route, navigation }) => {
   // console.log('Route data: ', route.params);
   return (
     <View style={styles.container}>
@@ -18,6 +18,12 @@ export default HomeScreen = ({route, navigation}) => {
           UId: <Text style={styles.detailText}>{Auth().currentUser.uid}</Text>
         </Text>
       </View>
+      <ManualButton
+        title={'Profile'}
+        onPress={async () => {
+          navigation.navigate('imageUpload');
+        }}
+      />
       <ManualButton
         title={'Logout'}
         onPress={async () => {

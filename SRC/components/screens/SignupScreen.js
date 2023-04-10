@@ -1,14 +1,16 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {RFPercentage} from 'react-native-responsive-fontsize';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 import auth from '@react-native-firebase/auth';
 import CommonStyles from '../../common/CommonStyles';
 import ManualButton from '../../common/subComponents/ManualButton';
 import InputBox from '../../common/subComponents/InputBox';
-import {StackActions} from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore'
 
-export default SignupScreen = ({navigation}) => {
+export default SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
 
@@ -16,23 +18,27 @@ export default SignupScreen = ({navigation}) => {
     try {
       // console.log('Email: ', email);
       // console.log('Password: ', password);
-      if (email.length > 0 && password.length > 0) {
+      if (email.length > 0 && password.length > 0 && name.length > 0) {
         const signupUser = await auth().createUserWithEmailAndPassword(
           email,
           password,
         );
-        console.log('user: ', signupUser);
-
-        if (signupUser.user.emailVerified) {
-          navigation.dispatch(StackActions.replace('homeScreen'));
-          setMessage(null);
-          // setEmail('');
-          // setPassword('');
-        } else {
-          alert('Please verify your email ID');
-          await auth().currentUser.sendEmailVerification();
-          await auth().signOut();
+        const userData = {
+          id: signupUser.user.uid,
+          name,
+          email,
         }
+
+        await firestore().collection('users').doc(signupUser.user.uid).set(userData);
+
+        // if (signupUser.user.emailVerified) {
+        // } else {
+        // }
+        setMessage(null);
+        await auth().currentUser.sendEmailVerification();
+        await auth().signOut();
+        navigation.dispatch(StackActions.replace('loginScreen'));
+        alert('Please verify your email ID');
         // console.log('EmailVerified? ', signupUser.user.emailVerified);
         // console.log('Signedup Successfully');
       } else {
@@ -52,15 +58,23 @@ export default SignupScreen = ({navigation}) => {
           title={'Email'}
           autoCapitalize="none"
           placeholder={'Enter your email account'}
-          onChangeText={text => setEmail(text)}
+          onChangeText={emailTxt => setEmail(emailTxt)}
           value={email}
           inputMode={'email'}
+        />
+        <InputBox
+          title={'Name'}
+          autoCapitalize="none"
+          placeholder={'Enter your full name'}
+          onChangeText={nameTxt => setName(nameTxt)}
+          value={name}
+          inputMode={'text'}
         />
         <InputBox
           secureTextEntry={true}
           title={'Password'}
           placeholder={'Enter your password'}
-          onChangeText={text => setPassword(text)}
+          onChangeText={passwordTxt => setPassword(passwordTxt)}
           value={password}
           error={message}
         />
@@ -75,7 +89,7 @@ export default SignupScreen = ({navigation}) => {
           }}>
           Already have an account?{' '}
           <Text
-            style={{fontWeight: '700'}}
+            style={{ fontWeight: '700' }}
             onPress={() => navigation.navigate('loginScreen')}>
             Login
           </Text>

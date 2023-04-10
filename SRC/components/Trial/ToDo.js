@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {RFPercentage} from 'react-native-responsive-fontsize';
+import React, { useEffect, useState } from 'react';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 import InputBox from '../../common/subComponents/InputBox';
 import CommonStyles from '../../common/CommonStyles';
 import ManualButton from '../../common/subComponents/ManualButton';
@@ -120,7 +120,7 @@ export default ToDo = () => {
       </View>
       <Text style={styles.title}>Users Name</Text>
       <FlatList
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         showsVerticalScrollIndicator={false}
         data={list}
         renderItem={item => {
@@ -150,7 +150,7 @@ export default ToDo = () => {
   );
 };
 
-const {height, width} = Dimensions.get('screen');
+const { height, width } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
