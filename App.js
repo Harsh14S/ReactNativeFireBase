@@ -1,7 +1,7 @@
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import CommonStyles from './SRC/common/CommonStyles';
-import EmailVerification from './SRC/components/Trial/EmailVerification';
+import {NavigationContainer} from '@react-navigation/native';
+import MainNavigator from './SRC/components/navigation/MainNavigator';
 
 const App = () => {
   return (
@@ -11,7 +11,10 @@ const App = () => {
         translucent={true}
         barStyle={'dark-content'}
       />
-      <EmailVerification />
+      <NavigationContainer>
+        <MainNavigator />
+      </NavigationContainer>
+      {/* <EmailVerification /> */}
     </View>
   );
 };

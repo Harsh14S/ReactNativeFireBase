@@ -21,3 +21,7 @@ npm install --save @react-native-firebase/app
 <!-- for realtime database -->
 
 npm i @react-native-firebase/database
+
+<!-- for authentication -->
+
+npm i @react-native-firebase/auth

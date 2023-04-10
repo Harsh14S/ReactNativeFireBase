@@ -1,13 +1,14 @@
-import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
-import { RFPercentage } from 'react-native-responsive-fontsize'
-import CommonStyles from '../CommonStyles'
+import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
+import {RFPercentage} from 'react-native-responsive-fontsize';
+import CommonStyles from '../CommonStyles';
 
 export default InputBox = ({
   title,
   placeholder,
   inputStyle,
   containerStyle,
+  error,
   ...props
 }) => {
   // const [active, setActive] = useState(false);
@@ -21,12 +22,16 @@ export default InputBox = ({
         placeholder={placeholder}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        style={[styles.inputBox, inputStyle, { borderColor: isFocused ? 'blue' : 'black' }]}
+        style={[
+          styles.inputBox,
+          inputStyle,
+          {borderColor: error ? 'red' : isFocused ? 'blue' : 'black'},
+        ]}
       />
+      {error && <Text style={styles.invalidLoginMsg}>{error}</Text>}
     </View>
-  )
-}
-
+  );
+};
 
 // const { height, width } = Dimensions.get('screen');
 
@@ -48,5 +53,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: RFPercentage(2),
     fontSize: RFPercentage(2.2),
     borderRadius: RFPercentage(1.5),
-  }
-})
+  },
+  invalidLoginMsg: {
+    color: 'red',
+  },
+});
