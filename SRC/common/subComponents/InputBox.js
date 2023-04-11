@@ -1,6 +1,6 @@
-import {Dimensions, StyleSheet, Text, TextInput, View} from 'react-native';
-import React, {useState} from 'react';
-import {RFPercentage} from 'react-native-responsive-fontsize';
+import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 import CommonStyles from '../CommonStyles';
 
 export default InputBox = ({
@@ -25,7 +25,7 @@ export default InputBox = ({
         style={[
           styles.inputBox,
           inputStyle,
-          {borderColor: error ? 'red' : isFocused ? 'blue' : 'black'},
+          { borderColor: error ? 'red' : isFocused ? 'blue' : 'black' },
         ]}
       />
       {error && <Text style={styles.invalidLoginMsg}>{error}</Text>}
@@ -41,8 +41,10 @@ const styles = StyleSheet.create({
     marginVertical: RFPercentage(1),
   },
   title: {
-    fontSize: RFPercentage(2.5),
+    fontSize: RFPercentage(2.2),
     marginBottom: RFPercentage(1),
+    color: 'black',
+    fontWeight: '700'
   },
   inputBox: {
     // width:

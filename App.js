@@ -1,7 +1,8 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import MainNavigator from './SRC/components/navigation/MainNavigator';
+import SocialAppNavigator from './SRC/components/navigation/SocialAppNavigator';
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
         barStyle={'dark-content'}
       />
       <NavigationContainer>
-        <MainNavigator />
+        <SocialAppNavigator />
       </NavigationContainer>
       {/* <EmailVerification /> */}
     </View>

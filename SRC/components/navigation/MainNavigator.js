@@ -21,12 +21,12 @@ const MainNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="splashScreen" component={SplashScreen} />
+      {/* <Stack.Screen name="splashScreen" component={SplashScreen} />
       <Stack.Screen name="signupScreen" component={SignupScreen} />
       <Stack.Screen name="loginScreen" component={LoginScreen} />
       <Stack.Screen name="homeScreen" component={HomeScreen} />
       <Stack.Screen name="mobileVerifyScreen" component={MobileVerifyScreen} />
-      <Stack.Screen name="imageUpload" component={ImageUpload} />
+      <Stack.Screen name="imageUpload" component={ImageUpload} /> */}
     </Stack.Navigator>
   );
 };
