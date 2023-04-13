@@ -4,18 +4,18 @@ import { RFPercentage } from 'react-native-responsive-fontsize'
 import InputBox from '../../common/subComponents/InputBox';
 import ManualButton from '../../common/subComponents/ManualButton';
 import CommonStyles from '../../common/CommonStyles';
-
 import firestore from '@react-native-firebase/firestore';
 import { StackActions } from '@react-navigation/native';
 
-const users = firestore().collection('Users');
-
 export default SSignInScreen = ({ navigation }) => {
+  useEffect(() => {
+    // const defaultAppMessaging = firebase.messaging().
+    // console.log();
+  }, [])
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState(null);
-
 
   const signinFunc = async () => {
     try {
@@ -25,7 +25,8 @@ export default SSignInScreen = ({ navigation }) => {
       // console.log("response: ", response.docs);
       if (response.docs.length > 0) {
         if (response.docs[0]._data.email === email && response.docs[0]._data.password === password) {
-          alert('User is successfully signed in.');
+          // alert('User is successfully signed in.');
+          navigation.dispatch(StackActions.replace('homeScreen'))
         } else alert('email or password is wrong')
       } else {
         alert('Account not found');

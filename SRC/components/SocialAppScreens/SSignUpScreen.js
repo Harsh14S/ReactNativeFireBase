@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, Text, View, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { RFPercentage } from 'react-native-responsive-fontsize'
 import InputBox from '../../common/subComponents/InputBox';
@@ -8,7 +8,6 @@ import messaging from '@react-native-firebase/messaging'
 
 import firestore from '@react-native-firebase/firestore';
 import { StackActions } from '@react-navigation/native';
-import { requestUserPermission } from '../../helper/notificationServices';
 
 export default SSignUpScreen = ({ navigation }) => {
 
@@ -19,14 +18,20 @@ export default SSignUpScreen = ({ navigation }) => {
   const [fcmToken, setFcmToken] = useState(null);
 
   useEffect(() => {
-    // getFcmToken();
-    requestUserPermission();
+    // requestUserPermission();
+
+
+    // notificationListener();
+    Platform.OS === 'ios' ? null : getFcmToken();
   }, []);
 
+
   const getFcmToken = async () => {
+    // await messaging().registerDeviceForRemoteMessages();
     const token = await messaging().getToken();
     // const token = await messaging().registerDeviceForRemoteMessages();
-    // console.log('Token achieved: ', token)
+    // const token = await messaging().getToken();
+    // console.log('Token achieved: ', token);
     setFcmToken(token);
   }
 
@@ -46,6 +51,7 @@ export default SSignUpScreen = ({ navigation }) => {
           name: name,
           token: fcmToken,
         })
+        console.log("fcmToken: ", fcmToken);
         navigation.dispatch(StackActions.replace('homeScreen'));
         alert("Account created successfully");
       }
@@ -85,7 +91,10 @@ export default SSignUpScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.btnContainer}>
-        <ManualButton title="Sign Up" onPress={() => saveData()} buttonStyle={{ backgroundColor: 'orange' }} />
+        <ManualButton title="Sign Up" onPress={() => {
+          saveData();
+          // console.log('Token achieved: ', fcmToken);
+        }} buttonStyle={{ backgroundColor: 'orange' }} />
         <Text
           style={{
             textAlign: 'center',
@@ -95,10 +104,7 @@ export default SSignUpScreen = ({ navigation }) => {
           Already have an account?
           <Text
             style={{ fontWeight: '700' }}
-            onPress={() => navigation.dispatch(StackActions.replace('signinScreen'))}
-          >
-            Sign In
-          </Text>
+            onPress={() => navigation.dispatch(StackActions.replace('signinScreen'))}> Sign In</Text>
         </Text>
       </View>
     </View>

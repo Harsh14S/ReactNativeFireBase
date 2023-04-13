@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>277454502150-vsrb0n8bhtv2676gfvon1ff7u23sj9g3.apps.googleusercontent.com</string>
+	<string>277454502150-ts8e1lan65ecd570qkcqhgsnsnq7pmfa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.277454502150-vsrb0n8bhtv2676gfvon1ff7u23sj9g3</string>
+	<string>com.googleusercontent.apps.277454502150-ts8e1lan65ecd570qkcqhgsnsnq7pmfa</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBo6gt-LbQLDTm0Op1j7RjxPyPTQmXEQiA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.reactjs.native.example.ReactNativeFireBase</string>
+	<string>com.reactnativefirebase</string>
 	<key>PROJECT_ID</key>
 	<string>fir-tut-ee124</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:277454502150:ios:7d5e573361612afb92c687</string>
+	<string>1:277454502150:ios:6a83ef9a88d8d74292c687</string>
+	<key>DATABASE_URL</key>
+	<string>https://fir-tut-ee124-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

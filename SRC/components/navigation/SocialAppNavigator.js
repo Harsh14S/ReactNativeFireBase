@@ -14,7 +14,8 @@ const Drawer = createDrawerNavigator();
 export default SocialAppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="splashScreen"
+      initialRouteName="homeScreen"
+      // initialRouteName="splashScreen"
       screenOptions={{
         headerShown: false,
       }}>
