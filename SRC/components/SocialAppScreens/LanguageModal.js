@@ -36,7 +36,7 @@ export default LanguageModal = ({ langModalVisible, setLangModalVisible, onSelec
       transparent={true}
       visible={langModalVisible}
       onRequestClose={() => {
-        setLangModalVisible(f);
+        setLangModalVisible(false);
       }}
     >
       <View style={styles.centeredView}>
@@ -62,14 +62,14 @@ export default LanguageModal = ({ langModalVisible, setLangModalVisible, onSelec
           <View style={styles.btnContainer}>
             <TouchableOpacity
               style={[styles.btnStyles, { backgroundColor: 'orange', marginRight: RFPercentage(0.5) }]}
-              onPress={() => setLangModalVisible(!langModalVisible)}
+              onPress={() => setLangModalVisible(false)}
             >
               <Text style={styles.btnTxt}>{translation.Cancel}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.btnStyles, { backgroundColor: 'skyblue', marginLeft: RFPercentage(0.5) }]}
               onPress={() => {
-                setLangModalVisible(!langModalVisible);
+                setLangModalVisible(false);
                 onSelectLang(selectedLangIndex);
                 // storeData(Languages[selectedLangIndex]);
                 // console.log("Language: ", Languages[selectedLangIndex]);
