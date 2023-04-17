@@ -11,32 +11,27 @@ import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
 
-// PushNotification.configure({
-//   onNotification: function (notification) {
-//     console.log("NOTIFICATION:", notification);
-//     notification.finish(PushNotificationIOS.FetchResult.NoData);
-//   },
-
-//   onAction: function (notification) {
-//     console.log("ACTION:", notification.action);
-//     console.log("NOTIFICATION:", notification);
-//   },
-
-//   permissions: {
-//     alert: true,
-//     badge: true,
-//     sound: true,
-//   },
-
-//   popInitialNotification: true,
-//   requestPermissions: true,
-// });
-
 PushNotification.configure({
   onNotification: function (notification) {
-    console.log('NOTIFICATION:', notification);
+    console.log("NOTIFICATION:", notification);
+    notification.finish(PushNotificationIOS.FetchResult.NoData);
   },
+
+  onAction: function (notification) {
+    console.log("ACTION:", notification.action);
+    console.log("NOTIFICATION:", notification);
+  },
+
+  permissions: {
+    alert: true,
+    badge: true,
+    sound: true,
+  },
+
+  popInitialNotification: true,
+  requestPermissions: true,
 });
+
 
 // to listen message in background
 messaging().setBackgroundMessageHandler(async remoteMessage => {

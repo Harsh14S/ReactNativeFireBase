@@ -96,6 +96,7 @@ export default SSignInScreen = ({ navigation }) => {
             Sign Up
           </Text>
         </Text>
+
       </View>
     </View>
   )

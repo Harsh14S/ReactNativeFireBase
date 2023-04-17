@@ -6,6 +6,7 @@ import SSplashScreen from '../SocialAppScreens/SSplashScreen';
 import SSignInScreen from '../SocialAppScreens/SSignInScreen';
 import SSignUpScreen from '../SocialAppScreens/SSignUpScreen';
 import SHomeScreen from '../SocialAppScreens/SHomeScreen';
+import SLanguageScreen from '../SocialAppScreens/SLanguageScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -14,15 +15,16 @@ const Drawer = createDrawerNavigator();
 export default SocialAppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="homeScreen"
-      // initialRouteName="splashScreen"
+      // initialRouteName="homeScreen"
+      initialRouteName="splashScreen"
       screenOptions={{
         headerShown: false,
       }}>
       <Stack.Screen name="splashScreen" component={SSplashScreen} />
+      <Stack.Screen name="languageScreen" component={SLanguageScreen} />
       <Stack.Screen name="signinScreen" component={SSignInScreen} />
       <Stack.Screen name="signupScreen" component={SSignUpScreen} />
-      <Stack.Screen name="homeScreen" component={SHomeScreen} />
+      {/* <Stack.Screen name="homeScreen" component={SHomeScreen} /> */}
     </Stack.Navigator>
   );
 };

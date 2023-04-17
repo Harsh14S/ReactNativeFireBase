@@ -68,6 +68,7 @@ const App = () => {
       />
       <NavigationContainer>
         <SocialAppNavigator />
+        {/* <MainNavigator /> */}
       </NavigationContainer>
       {/* <EmailVerification /> */}
     </View>

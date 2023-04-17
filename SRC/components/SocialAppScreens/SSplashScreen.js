@@ -3,20 +3,35 @@ import React, { useEffect, useState } from 'react';
 import Auth from '@react-native-firebase/auth';
 import { StackActions } from '@react-navigation/native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
+import Languages from '../../Languages';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default SSplashScreen = ({ navigation }) => {
   useEffect(() => {
+
+    storeData();
     setTimeout(() => {
       const unsunscribe = Auth().onAuthStateChanged(user => {
         // console.log('User: ', user);
-        const routeName = user !== null ? 'homeScreen' : 'loginScreen';
+        const routeName = user !== null ? 'homeScreen' : 'languageScreen';
         unsunscribe();
-        navigation.dispatch(StackActions.replace('signinScreen'));
+        navigation.dispatch(StackActions.replace('languageScreen'));
         // navigation.navigate(routeName);
       });
     }, 1000);
     return () => { };
   }, []);
+
+  const storeData = async () => {
+    try {
+      const jsonValue = JSON.stringify(Languages[0]);
+      // console.log("JSON: ", jsonValue);
+      await AsyncStorage.setItem('LANG', jsonValue)
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: RFPercentage(5), fontWeight: '800', color: 'brown' }}>Social App</Text>
