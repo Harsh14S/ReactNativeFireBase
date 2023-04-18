@@ -2,31 +2,30 @@ import { FlatList, Image, Modal, StyleSheet, Text, TouchableOpacity, View } from
 import React, { useEffect, useState } from 'react'
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import IconLinks from '../../common/IconLinks';
-import ManualButton from '../../common/subComponents/ManualButton';
-import Languages from '../../Languages';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 
-export default LanguageModal = ({ langModalVisible, setLangModalVisible, onSelectLang }) => {
 
-  const [language, setLanguage] = useState(Languages[0]);
-  const [selectedLangIndex, setSelectedLangIndex] = useState(0);
-  const translation = Languages[selectedLangIndex].translation;
+let languages = [
+  { name: 'English', value: 'en', selected: true },
+  { name: 'हिंदी', value: 'hi', selected: false },
+  { name: 'ગુજરાતી', value: 'gj', selected: false },
+]
+
+export default LanguageModal = ({ langModalVisible, setLangModalVisible }) => {
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState('en');
+  const [initLang, setInitLang] = useState(null);
 
   const onSelect = (ind) => {
-    const temp = Languages;
-    temp.map((item, index) => {
+    // const temp = languages;
+    languages.map((item, index) => {
       if (index === ind) {
         if (item.selected === false) {
           item.selected = true;
-          setSelectedLangIndex(ind);
         }
       } else {
         item.selected = false;
       }
-      let temp2 = [];
-      temp.map(item => {
-        temp2.push(item);
-      });
     });
   }
 
@@ -41,20 +40,21 @@ export default LanguageModal = ({ langModalVisible, setLangModalVisible, onSelec
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.headingTxt}>{translation.SelectLanguage}</Text>
-          {/* <Text style={styles.headingTxt}>{selectedLangIndex}</Text> */}
+          <Text style={styles.headingTxt}>{t('SelectLanguage')}</Text>
           <FlatList
-            data={Languages}
+            data={languages}
             showsVerticalScrollIndicator={false}
             renderItem={({ item, index }) => {
               return (
                 <TouchableOpacity
                   key={index}
                   style={styles.langBtn}
-                  onPress={() => onSelect(index)}
-                >
+                  onPress={() => {
+                    onSelect(index);
+                    setLanguage(item.value);
+                  }}>
                   <Image style={styles.radioBtn} source={item.selected ? IconLinks.radioBtnSel : IconLinks.radioBtnUnsel} />
-                  <Text style={styles.langTxt}>{item.languageName}</Text>
+                  <Text style={styles.langTxt}>{item.name}</Text>
                 </TouchableOpacity>
               )
             }}
@@ -62,20 +62,21 @@ export default LanguageModal = ({ langModalVisible, setLangModalVisible, onSelec
           <View style={styles.btnContainer}>
             <TouchableOpacity
               style={[styles.btnStyles, { backgroundColor: 'orange', marginRight: RFPercentage(0.5) }]}
-              onPress={() => setLangModalVisible(false)}
+              onPress={() => {
+                setLangModalVisible(false);
+                setInitLang(language);
+              }}
             >
-              <Text style={styles.btnTxt}>{translation.Cancel}</Text>
+              <Text style={styles.btnTxt}>{t('Cancel')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.btnStyles, { backgroundColor: 'skyblue', marginLeft: RFPercentage(0.5) }]}
               onPress={() => {
+                setInitLang(language);
                 setLangModalVisible(false);
-                onSelectLang(selectedLangIndex);
-                // storeData(Languages[selectedLangIndex]);
-                // console.log("Language: ", Languages[selectedLangIndex]);
-              }}
-            >
-              <Text style={styles.btnTxt}>{translation.Select}</Text>
+                i18n.changeLanguage(language);
+              }}>
+              <Text style={styles.btnTxt}>{t('Select')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -92,7 +93,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   modalView: {
-    // height: '35%',
     width: '85%',
     backgroundColor: 'white',
     borderRadius: RFPercentage(3),

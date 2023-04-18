@@ -8,9 +8,12 @@ import messaging from '@react-native-firebase/messaging'
 
 import firestore from '@react-native-firebase/firestore';
 import { StackActions } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Languages from '../../Languages';
+import { useTranslation } from 'react-i18next';
 
 export default SSignUpScreen = ({ navigation }) => {
-
+  const { t, i18n } = useTranslation();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -18,13 +21,9 @@ export default SSignUpScreen = ({ navigation }) => {
   const [fcmToken, setFcmToken] = useState(null);
 
   useEffect(() => {
-    // requestUserPermission();
-
-
-    // notificationListener();
+    getStoreData();
     Platform.OS === 'ios' ? null : getFcmToken();
   }, []);
-
 
   const getFcmToken = async () => {
     // await messaging().registerDeviceForRemoteMessages();
@@ -63,10 +62,10 @@ export default SSignUpScreen = ({ navigation }) => {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.headingText}>Sign Up</Text>
+      <Text style={styles.headingText}>{t('Signup')}</Text>
       <View style={styles.inputContainer}>
         <InputBox
-          title={'Email'}
+          title={t('Email')}
           autoCapitalize="none"
           placeholder={'Enter your email account'}
           onChangeText={emailTxt => setEmail(emailTxt)}
@@ -74,7 +73,7 @@ export default SSignUpScreen = ({ navigation }) => {
           inputMode={'email'}
         />
         <InputBox
-          title={'Name'}
+          title={t('Name')}
           autoCapitalize="none"
           placeholder={'Enter your full name'}
           onChangeText={nameTxt => setName(nameTxt)}
@@ -83,7 +82,7 @@ export default SSignUpScreen = ({ navigation }) => {
         />
         <InputBox
           secureTextEntry={true}
-          title={'Password'}
+          title={t('Password')}
           placeholder={'Enter your password'}
           onChangeText={passwordTxt => setPassword(passwordTxt)}
           value={password}
@@ -91,7 +90,7 @@ export default SSignUpScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.btnContainer}>
-        <ManualButton title="Sign Up" onPress={() => {
+        <ManualButton title={t('Signup')} onPress={() => {
           saveData();
           // console.log('Token achieved: ', fcmToken);
         }} buttonStyle={{ backgroundColor: 'orange' }} />
@@ -101,10 +100,10 @@ export default SSignUpScreen = ({ navigation }) => {
             fontSize: RFPercentage(2),
             marginTop: RFPercentage(1),
           }}>
-          Already have an account?
+          {t('AlreadyAcc')}
           <Text
             style={{ fontWeight: '700' }}
-            onPress={() => navigation.dispatch(StackActions.replace('signinScreen'))}> Sign In</Text>
+            onPress={() => navigation.dispatch(StackActions.replace('signinScreen'))}> {t('Signin')}</Text>
         </Text>
       </View>
     </View>

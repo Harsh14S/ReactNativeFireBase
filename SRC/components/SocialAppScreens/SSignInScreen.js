@@ -6,12 +6,10 @@ import ManualButton from '../../common/subComponents/ManualButton';
 import CommonStyles from '../../common/CommonStyles';
 import firestore from '@react-native-firebase/firestore';
 import { StackActions } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 export default SSignInScreen = ({ navigation }) => {
-  useEffect(() => {
-    // const defaultAppMessaging = firebase.messaging().
-    // console.log();
-  }, [])
+  const { t, i18n } = useTranslation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,50 +17,28 @@ export default SSignInScreen = ({ navigation }) => {
 
   const signinFunc = async () => {
     try {
-
       const response = await firestore().collection('Users').where('email', '==', email).get()
 
-      // console.log("response: ", response.docs);
       if (response.docs.length > 0) {
         if (response.docs[0]._data.email === email && response.docs[0]._data.password === password) {
-          // alert('User is successfully signed in.');
           navigation.dispatch(StackActions.replace('homeScreen'))
         } else alert('email or password is wrong')
       } else {
         alert('Account not found');
       }
-
     } catch {
       (error) => {
         console.log("Error: ", error);
       }
     }
-    // try {
-    //   await users.add({
-    //     email: email,
-    //     password: password,
-    //   }).then(() => {
-    //     alert("User added successfully")
-    //   })
-    //   // console.log("Response: ", response);
-    // } catch (error) {
-    //   console.log("Error: ", error);
-    // }
-    // firestore().collection('Users').where('email', '==', email).get()
-    //   .then((querySnaphot) => {
-    //     console.log("Response: ", querySnaphot.docs);
-    //     alert("User added successfully")
-    //   }).catch(error => {
-    //     alert("User Not Found" );
-    // })
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headingText}>Sign In</Text>
+      <Text style={styles.headingText}>{t('Signin')}</Text>
       <View style={styles.inputContainer}>
         <InputBox
-          title={'Email'}
+          title={t('Email')}
           autoCapitalize="none"
           placeholder={'Enter your email account'}
           onChangeText={text => setEmail(text)}
@@ -71,7 +47,7 @@ export default SSignInScreen = ({ navigation }) => {
         />
         <InputBox
           secureTextEntry={true}
-          title={'Password'}
+          title={t('Password')}
           placeholder={'Enter your password'}
           onChangeText={text => setPassword(text)}
           value={password}
@@ -79,7 +55,7 @@ export default SSignInScreen = ({ navigation }) => {
         />
       </View>
       <View style={styles.btnContainer}>
-        <ManualButton title="Sign In" onPress={() => {
+        <ManualButton title={t('Signin')} onPress={() => {
           signinFunc()
         }} buttonStyle={{ backgroundColor: 'orange' }} />
         <Text
@@ -88,12 +64,12 @@ export default SSignInScreen = ({ navigation }) => {
             fontSize: RFPercentage(2),
             marginTop: RFPercentage(1),
           }}>
-          Want to Create an account?{' '}
+          {t('DoUWantToCreateNewAcc')}{' '}
           <Text
             style={{ fontWeight: '700' }}
             onPress={() => navigation.dispatch(StackActions.replace('signupScreen'))}
           >
-            Sign Up
+            {t('Signup')}
           </Text>
         </Text>
 

@@ -9,50 +9,39 @@ import { StackActions } from '@react-navigation/native';
 import LanguageModal from './LanguageModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Languages from '../../Languages';
+import { useTranslation } from 'react-i18next';
+
+
 
 export default SSignInScreen = ({ navigation }) => {
+  const { t, i18n } = useTranslation();
   const [langModalVisible, setLangModalVisible] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(0);
-  const [language, setLanguage] = useState(Languages[0]);
-  const [translation, setTranslation] = useState(language.translation);
 
 
   const signinFunc = () => {
-    navigation.dispatch(StackActions.replace('signinScreen'));
+    navigation.navigate('signinScreen');
   }
   const signupFunc = () => {
-    navigation.dispatch(StackActions.replace('signupScreen'));
+    navigation.navigate('signupScreen');
   }
-
-  const getData = async () => {
-    try {
-      setLanguage(await AsyncStorage.getItem('LANG'))
-    } catch (e) {
-      console.log("Error: ", e);
-    }
-  }
-  useEffect(() => {
-    getData();
-  }, [])
 
   return (
     <View style={styles.container}>
       <View style={styles.btnContainer}>
-        <Text style={styles.headingText}>{translation.Select}</Text>
-        <ManualButton title={translation.Signin} onPress={() => {
+        <Text style={[styles.headingText, { fontSize: RFPercentage(5) }]}>{t('Welcome')}</Text>
+        <ManualButton title={t('Signin')} onPress={() => {
           signinFunc()
         }} buttonStyle={{ backgroundColor: 'orange' }} />
-        <ManualButton title={translation.Signup} onPress={() => {
+        <ManualButton title={t('Signup')} onPress={() => {
           signupFunc()
         }} buttonStyle={{ backgroundColor: 'orange' }} />
       </View>
       <LanguageModal
-        langModalVisisble={langModalVisible}
-        setLangModalVisible={setLangModalVisible}
-        onSelectLang={(idx) => setSelectedLang(idx)} />
+        langModalVisible={langModalVisible}
+        setLangModalVisible={setLangModalVisible} />
       <View style={styles.languageSelectContainer}>
         <ManualButton
-          title={translation.SelectLanguage}
+          title={t('SelectLanguage')}
           textStyle={{ fontWeight: '400', fontSize: RFPercentage(1.8) }}
           buttonStyle={{ borderWidth: 0.5, borderColor: 'grey', backgroundColor: 'white' }}
           onPress={() => {

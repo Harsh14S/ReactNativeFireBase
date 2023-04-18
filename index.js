@@ -9,6 +9,7 @@ import messaging from '@react-native-firebase/messaging';
 
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import i18n from './SRC/assets/languages/i18n'
 
 
 PushNotification.configure({

@@ -5,15 +5,17 @@ import { StackActions } from '@react-navigation/native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import Languages from '../../Languages';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 
 export default SSplashScreen = ({ navigation }) => {
+  const { t } = useTranslation();
   useEffect(() => {
 
     storeData();
     setTimeout(() => {
       const unsunscribe = Auth().onAuthStateChanged(user => {
         // console.log('User: ', user);
-        const routeName = user !== null ? 'homeScreen' : 'languageScreen';
+        // const routeName = user !== null ? 'homeScreen' : 'languageScreen';
         unsunscribe();
         navigation.dispatch(StackActions.replace('languageScreen'));
         // navigation.navigate(routeName);
@@ -24,9 +26,8 @@ export default SSplashScreen = ({ navigation }) => {
 
   const storeData = async () => {
     try {
-      const jsonValue = JSON.stringify(Languages[0]);
       // console.log("JSON: ", jsonValue);
-      await AsyncStorage.setItem('LANG', jsonValue)
+      await AsyncStorage.setItem('LANG', '0')
     } catch (error) {
       console.log("Error: ", error);
     }

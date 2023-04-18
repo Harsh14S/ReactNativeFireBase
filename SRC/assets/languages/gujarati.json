@@ -1,0 +1,18 @@
+{
+  "languageName": "ગુજરાતી",
+  "translation": {
+    "Welcome": "સ્વાગત છે",
+    "Select": "પસંદ કરો",
+    "Signin": "પ્રવેશ તરફ",
+    "Signup": "દાખલ તરફ",
+    "SelectLanguage": "ભાષા પસંદ કરો",
+    "Cancel": "રદ કરો",
+    "AlreadyAcc": "શું તમારી પાસે પહેલેથી જ એકાઉન્ટ છે?",
+    "Password": "પાસવર્ડ",
+    "Name": "નામ",
+    "Email": "Email",
+    "CreateNewAcc": "નવું ખાતું બનાવો",
+    "DoUWantToCreateNewAcc": "શું તમે નવું ખાતું બનાવવા માંગો છો?"
+  },
+  "selected": false
+}

@@ -1,5 +1,6 @@
 export default LANGUAGE = [
   {
+    'language': 'en',
     'languageName': 'English',
     'translation': {
       'Select': 'Select',
@@ -7,10 +8,17 @@ export default LANGUAGE = [
       'Signup': 'Sign Up',
       'SelectLanguage': 'Select Language',
       'Cancel': 'Cancel',
+      'AlreadyAcc': 'Already have an account?',
+      'Password': 'Password',
+      'Name': 'Name',
+      'Email': 'Email',
+      'CreateNewAcc': 'New Account',
+      'DoUWantToCreateNewAcc': 'Want to create new account?',
     },
     'selected': true,
   },
   {
+    'language': 'hi',
     'languageName': 'हिंदी',
     'translation': {
       'Select': 'चुनना',
@@ -18,17 +26,31 @@ export default LANGUAGE = [
       'Signup': 'दाखिल करना',
       'SelectLanguage': 'भाषा चुने',
       'Cancel': 'रद्द करें',
+      'AlreadyAcc': 'क्या आपके पास पहले से खाता मौजूद है?',
+      'Password': 'पासवर्ड',
+      'Name': 'नाम',
+      'Email': 'Email',
+      'CreateNewAcc': 'नया खाता बनाएँ',
+      'DoUWantToCreateNewAcc': 'क्या आप नया खाता बनाना चाहते हैं?',
     },
     'selected': false,
   },
   {
+    'language': 'gj',
     'languageName': 'ગુજરાતી',
     'translation': {
       'Select': 'પસંદ કરો',
-      'Signin': 'પ્રવેશ કરો',
-      'Signup': 'દાખલ કરો',
+      'Signin': 'પ્રવેશ તરફ',
+      'Signup': 'દાખલ તરફ',
       'SelectLanguage': 'ભાષા પસંદ કરો',
       'Cancel': 'રદ કરો',
+      'AlreadyAcc': 'શું તમારી પાસે પહેલેથી જ એકાઉન્ટ છે?',
+      'Password': 'પાસવર્ડ',
+      'Name': 'નામ',
+      'Email': 'Email',
+      'CreateNewAcc': 'નવું ખાતું બનાવો',
+      'DoUWantToCreateNewAcc': 'શું તમે નવું ખાતું બનાવવા માંગો છો?',
+
     },
     'selected': false,
   },
