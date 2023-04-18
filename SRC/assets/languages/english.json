@@ -1,0 +1,18 @@
+{
+  "languageName": "English",
+  "translation": {
+    "Welcome": "Welcome",
+    "Select": "Select",
+    "Signin": "Sign In",
+    "Signup": "Sign Up",
+    "SelectLanguage": "Select Language",
+    "Cancel": "Cancel",
+    "AlreadyAcc": "Already have an account?",
+    "Password": "Password",
+    "Name": "Name",
+    "Email": "Email",
+    "CreateNewAcc": "New Account",
+    "DoUWantToCreateNewAcc": "Want to create new account?"
+  },
+  "selected": true
+}
