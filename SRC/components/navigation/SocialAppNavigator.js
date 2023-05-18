@@ -44,7 +44,7 @@ export default SocialAppNavigator = () => {
       <Stack.Screen name="languageScreen" component={SLanguageScreen} options={{ title: translation.SelectLanguage }} />
       <Stack.Screen name="signinScreen" component={SSignInScreen} options={{ title: translation.Signin }} />
       <Stack.Screen name="signupScreen" component={SSignUpScreen} options={{ title: translation.Signup }} />
-      {/* <Stack.Screen name="homeScreen" component={SHomeScreen} /> */}
+      <Stack.Screen name="homeScreen" component={SHomeScreen} />
     </Stack.Navigator>
   );
 };

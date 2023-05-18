@@ -15,6 +15,7 @@ import PushNotification from 'react-native-push-notification';
 const App = () => {
   // const [state, setState] = useState({});
   useEffect(() => {
+    notificationListener();
     registerAppWithFCM();
     requestUserPermission();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -67,8 +68,8 @@ const App = () => {
         barStyle={'dark-content'}
       />
       <NavigationContainer>
-        <SocialAppNavigator />
-        {/* <MainNavigator /> */}
+        {/* <SocialAppNavigator /> */}
+        <MainNavigator />
       </NavigationContainer>
       {/* <EmailVerification /> */}
     </View>
